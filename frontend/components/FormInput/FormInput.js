@@ -4,19 +4,21 @@ export function FormInput({ children, buttonTitle }) {
   return (
     <View style={styles.formContainer} >
         {children}
-        <Button title={buttonTitle} />
+        <Button title={buttonTitle} style={styles.buttonStyle} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   formContainer: {
-    flex: 2,
+    flex: .5,
     width: '80%',
-    height: 'fit-content',
-    backgroundColor: 'brown',
-    border: '1px solid black',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonStyle: {
+    fontFamily: 'Open Sans',
+    width: 100,
+    borderRadius: '10px',
+  }
 });

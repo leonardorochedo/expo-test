@@ -13,13 +13,22 @@ export function InputArea({ title, placeholder }) {
 
 const styles = StyleSheet.create({
   label: {
-    textAlign: 'left',
     fontSize: '1rem',
+    marginBottom: '1rem',
+    marginRight: 'auto',
+    fontFamily: 'Open Sans',
+    color: 'white',
+    fontWeight: 'bold',
   },
   input: {
+    width: '100%',
+    height: '2rem',
+    padding: '4px',
+    marginBottom: '2rem',
     backgroundColor: '#fff',
     border: '1px solid black',
-    alignItems: 'center',
+    borderRadius: '5px',
     justifyContent: 'center',
+    fontFamily: 'Open Sans',
   },
 });

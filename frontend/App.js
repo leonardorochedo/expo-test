@@ -17,12 +17,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'grey',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: '2rem',
-    fontStyle: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Open Sans',
+    color: 'white',
   }
 });
