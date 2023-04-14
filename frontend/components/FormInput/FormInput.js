@@ -1,10 +1,12 @@
-import { View, Button, StyleSheet } from 'react-native';
+import { View, Pressable, Text, StyleSheet } from 'react-native';
 
 export function FormInput({ children, buttonTitle }) {
   return (
     <View style={styles.formContainer} >
         {children}
-        <Button title={buttonTitle} style={styles.buttonStyle} />
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText} >{buttonTitle.toUpperCase()}</Text>
+        </Pressable>
     </View>
   );
 }
@@ -16,9 +18,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonStyle: {
+  button: {
+    height: '2rem',
+    width: '100%',
+    backgroundColor: 'transparent',
+    border: '2px solid #00ff00',
+    borderRadius: '5px',
+    textAlign: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
     fontFamily: 'Open Sans',
-    width: 100,
-    borderRadius: '10px',
+    color: '#00ff00',
   }
 });
