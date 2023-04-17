@@ -11,12 +11,14 @@ export const styles = StyleSheet.create({
       backgroundColor: 'grey',
       alignItems: 'center',
       justifyContent: 'center',
+      paddingTop: '5rem'
     },
     title: {
       fontSize: '2rem',
       fontWeight: 'bold',
       fontFamily: font_family,
       color: title_color,
+      //marginTop: '10%',
     },
     // Input
     label: {
@@ -40,7 +42,7 @@ export const styles = StyleSheet.create({
     },
     // Form
     formContainer: {
-      flex: .5,
+      flex: 1,
       width: '80%',
       alignItems: 'center',
       justifyContent: 'center',
