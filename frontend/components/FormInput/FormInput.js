@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import { View, Pressable, Text } from 'react-native';
 
 import { styles } from '../../styleProps';
 
 export function FormInput({ children, buttonTitle }) {
-
-  const [isPressed, setIsPressed] = useState(false)
 
   return (
     <View style={styles.formContainer} >

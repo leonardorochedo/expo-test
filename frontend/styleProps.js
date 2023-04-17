@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
 
 var font_family = 'Verdana'
-var font_color = '#fff'
+var title_color = '#00ced1'
+var text_color = '#fff'
 
 export const styles = StyleSheet.create({
     // Geral 
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
       fontSize: '2rem',
       fontWeight: 'bold',
       fontFamily: font_family,
-      color: font_color,
+      color: title_color,
     },
     // Input
     label: {
@@ -24,7 +25,7 @@ export const styles = StyleSheet.create({
       marginRight: 'auto',
       fontWeight: 'bold',
       fontFamily: font_family,
-      color: font_color,
+      color: text_color,
     },
     input: {
       width: '100%',
@@ -46,19 +47,16 @@ export const styles = StyleSheet.create({
     },
     button: {
       height: '2rem',
-      width: '100%',
+      width: '30%',
+      marginLeft: 'auto',
       backgroundColor: 'transparent',
-      border: '2px solid #00ff00',
+      border: `2px solid ${title_color}`,
       borderRadius: '5px',
       textAlign: 'center',
       justifyContent: 'center',
     },
     buttonText: {
       fontFamily: font_family,
-      color: '#00ff00',
+      color: title_color,
     },
-    buttonPressed: {
-      backgroundColor: '#00ff00',
-      color: font_color
-    }
 });

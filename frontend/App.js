@@ -1,17 +1,17 @@
-import { Text, View } from 'react-native';
-import { InputArea } from './components/InputArea/InputArea';
-import { FormInput } from './components/FormInput/FormInput';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { styles } from './styleProps';
+//  Pages
+import { HomeScreen } from "./pages/HomeScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title} >MyApp!</Text>
-      <FormInput buttonTitle="Entrar" >
-        <InputArea title="E-mail" placeholder="Digite seu e-mail" />
-        <InputArea title="Senha" placeholder="Digite sua senha" />
-      </FormInput>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
