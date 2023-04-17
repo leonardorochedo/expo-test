@@ -1,34 +1,18 @@
-import { View, Pressable, Text, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Pressable, Text } from 'react-native';
+
+import { styles } from '../../styleProps';
 
 export function FormInput({ children, buttonTitle }) {
+
+  const [isPressed, setIsPressed] = useState(false)
+
   return (
     <View style={styles.formContainer} >
         {children}
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} >
           <Text style={styles.buttonText} >{buttonTitle.toUpperCase()}</Text>
         </Pressable>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  formContainer: {
-    flex: .5,
-    width: '80%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    height: '2rem',
-    width: '100%',
-    backgroundColor: 'transparent',
-    border: '2px solid #00ff00',
-    borderRadius: '5px',
-    textAlign: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    fontFamily: 'Open Sans',
-    color: '#00ff00',
-  }
-});
