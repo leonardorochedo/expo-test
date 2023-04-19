@@ -15,6 +15,8 @@ app.use(cors({
 app.use(express.static('public'))
 
 // Routes
+const UserRoutes = require('./routes/UserRoutes')
+app.use('/users', UserRoutes)
 
 // Server
 app.listen(5000)
