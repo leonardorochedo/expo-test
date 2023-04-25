@@ -38,7 +38,7 @@ export function useApi() {
         navigation.navigate("Home")
     }
 
-    async function register(user) {
+    async function registerUser(user) {
         let msgText = 'Cadastro realizado com sucesso!'
 
         try {
@@ -48,14 +48,16 @@ export function useApi() {
 
             await authUser(data)
             
+            console.log(msgText)
             // Toast.success(msgText)
         } catch (err) {
             msgText = err.response.data.message
+            console.log(msgText)
             // Toast.error(msgText)
         }
     }
 
-    async function login(user) {
+    async function loginUser(user) {
         let msgText = 'Login realizado com sucesso!'
 
         try {
@@ -72,6 +74,6 @@ export function useApi() {
         }
     }
 
-    return { authenticated, register, login }
+    return { authenticated, registerUser, loginUser }
 
 }

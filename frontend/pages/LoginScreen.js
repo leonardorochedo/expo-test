@@ -11,7 +11,7 @@ import { styles } from '../styleProps';
 
 export function LoginScreen({ navigation }) {
 
-    const { login } = useContext(Context)
+    const { loginUser } = useContext(Context)
 
     const { register, setValue, handleSubmit } = useForm()
 
@@ -22,7 +22,7 @@ export function LoginScreen({ navigation }) {
     }, [register])
 
     async function onSubmit(data) {
-      await login(data)
+      await loginUser(data)
     }
 
     return (

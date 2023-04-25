@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 
 import { styles } from '../styleProps';
 
-export function HomeScreen({ navigation }) {
+export function HomeScreen() {
 
     return (
       <View style={styles.container}>
