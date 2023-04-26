@@ -7,7 +7,7 @@ import { FormInput } from '../components/FormInput/FormInput';
 
 import { Context } from '../context/UserContext';
 
-import { styles } from '../styleProps';
+import { styles } from '../utils/styles';
 
 export function RegisterScreen({ navigation }) {
 

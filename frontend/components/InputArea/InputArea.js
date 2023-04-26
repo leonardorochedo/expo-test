@@ -1,6 +1,6 @@
 import { Text, TextInput } from 'react-native';
 
-import { styles } from '../../styleProps';
+import { styles } from '../../utils/styles';
 
 export function InputArea({ title, placeholder, onChangeTextHandle, secureTextEntry }) {
   return (

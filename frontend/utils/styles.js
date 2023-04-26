@@ -57,8 +57,15 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       justifyContent: 'center',
     },
+    buttonPressed: {
+      backgroundColor: title_color,
+      transitionDuration: '100ms',
+    },
     buttonText: {
       fontFamily: font_family,
       color: title_color,
     },
+    buttonTextPressed: {
+      color: text_color,
+    }
 });
