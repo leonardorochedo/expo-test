@@ -15,7 +15,7 @@ const getUserByToken = async (token) => {
 
     const userId = decoded.id
 
-    const user = await User.findOne({_id: userId}) // pegando o user pelo id pegado no token
+    const user = await User.findOne({where: {id: userId}})
 
     return user
 }

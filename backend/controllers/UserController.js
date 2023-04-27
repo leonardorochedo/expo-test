@@ -91,6 +91,7 @@ module.exports = class UserController {
 
         // check if user exists
         const user = await User.findOne({where: {email: email}})
+
         if(!user) {
             res.status(404).json({message: 'Não há usuário cadastrado com esse email!'})
             return
@@ -106,6 +107,107 @@ module.exports = class UserController {
 
         // login user
         await createUserToken(user, req, res)
+    }
+
+    static async editUser(req, res) {
+        const id = req.params.id
+
+        // check if user exist
+        const token = getToken(req)
+        const user = await getUserByToken(token)
+
+        const {name, email, phone, password, confirmpassword} = req.body
+
+        const userIsAuthenticated = user.id == id
+
+        if(!userIsAuthenticated) {
+            res.status(401).json({message: "Você não é autorizado para isso!"})
+            return
+        }
+
+        // validations
+        if(!name) {
+            res.status(422).json({message: 'O nome é obrigatório'})
+            return
+        }
+
+        user.name = name
+
+        if(!email) {
+            res.status(422).json({message: 'O e-mail é obrigatório'})
+            return
+        }
+
+        const userExistis = await User.findOne({where: {email: email}}) // search for user in mongo
+
+        // check if email has already taken
+        if(user.email !== email && userExistis) {
+            res.status(422).json({message: 'Por favor, utiliza outro e-mail!'})
+            return
+        }
+
+        user.email = email
+
+        if(!phone) {
+            res.status(422).json({message: 'O telefone é obrigatório!'})
+            return
+        }
+
+        user.phone = phone
+
+        if(!password || !confirmpassword) {
+            res.status(422).json({message: 'As senhas são obrigatórias!'})
+            return
+        }
+        if(password != confirmpassword) {
+            res.status(422).json({message: 'As senhas não conferem!'})
+            return
+        } else if(password === confirmpassword && password != null) {
+
+            // creating password
+            const salt = await bcrypt.genSalt(12)
+            const passwordHash = await bcrypt.hash(password, salt)
+
+            user.password = passwordHash
+        }
+
+        try {
+            await User.update(user.dataValues, {where: {id: user.id}})
+
+            // atualizar os carros do usuarios
+            // await Post.updateMany()
+
+            res.status(200).json({
+                message: "Usuário atualizado com sucesso!"
+            })
+        } catch (err) {
+            res.status(500).json({message: err})
+            return
+        }
+
+    }
+
+    static async deleteUser(req, res) {
+        const id = req.params.id
+
+        // check if user exist
+        const token = getToken(req)
+        const user = await getUserByToken(token)
+
+        const userIsAuthenticated = user.id == id
+
+        if(!userIsAuthenticated) {
+            res.status(401).json({message: "Você não é autorizado para isso!"})
+            return
+        }
+
+        try {
+            await User.destroy({where: {id: user.id}})
+            // await Post.deleteMany({'user._id': id})
+            res.status(202).json({message: 'Usuário deletado com sucesso!'})
+        } catch(err) {
+            res.status(500).json({message: err})
+        }
     }
 
     static async getUserById(req, res) {
