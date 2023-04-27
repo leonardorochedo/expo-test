@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 
-import { styles } from '../styleProps';
+import { styles } from '../utils/styles';
 
 export function HomeScreen() {
 
