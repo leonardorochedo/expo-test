@@ -1,7 +1,8 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import { Text, View, StyleSheet } from 'react-native';
 
+import { Notification } from '../components/Notification/Notification';
 import { InputArea } from '../components/InputArea/InputArea';
 import { FormInput } from '../components/FormInput/FormInput';
 
@@ -15,6 +16,8 @@ export function RegisterScreen({ navigation }) {
 
     const { register, setValue, handleSubmit } = useForm()
 
+    const [notify, setNotify] = useState({})
+
     // register fields
     useEffect(() => {
       register('name')
@@ -25,11 +28,12 @@ export function RegisterScreen({ navigation }) {
     }, [register])
 
     async function onSubmit(data) {
-      await registerUser(data)
+      await registerUser(data).then((response) => setNotify(response))
     }
 
     return (
       <View style={styles.container}>
+        <Notification message={notify?.message} type={notify?.type} />
         <Text style={styles.title} >MyApp!</Text>
         <FormInput buttonTitle="Registrar" onPressHandle={handleSubmit(onSubmit)} >
           <InputArea title="Nome" placeholder="Digite seu nome" onChangeTextHandle={text => setValue('name', text)} />

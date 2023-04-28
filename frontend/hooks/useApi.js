@@ -6,9 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Navigation
 import { useNavigation } from '@react-navigation/native';
 
-// Message
-// import { Toast } from 'toastify-react-native';
-
 import api from '../utils/api';
 
 export function useApi() {
@@ -35,7 +32,9 @@ export function useApi() {
     async function authUser(data) {
         setAuthenticate(true)
         AsyncStorage.setItem('token', JSON.stringify(data.token)) // setando token
-        navigation.navigate("Home")
+        setInterval(() => {
+            navigation.navigate("Home")
+        }, 2000)
     }
 
     async function registerUser(user) {
@@ -46,14 +45,12 @@ export function useApi() {
                 return response.data
             })
 
-            await authUser(data)
+            authUser(data)
             
-            console.log(msgText)
-            // Toast.success(msgText)
+            return {message: msgText, type: 'success'}
         } catch (err) {
             msgText = err.response.data.message
-            console.log(msgText)
-            // Toast.error(msgText)
+            return {message: msgText, type: 'danger'}
         }
     }
 
@@ -65,12 +62,12 @@ export function useApi() {
                 return response.data
             })
 
-            await authUser(data)
+            authUser(data)
             
-            console.log(msgText)
+            return {message: msgText, type: 'success'}
         } catch (err) {
             msgText = err.response.data.message
-            console.log(msgText)
+            return {message: msgText, type: 'danger'}
         }
     }
 
