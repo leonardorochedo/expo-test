@@ -33,8 +33,8 @@ export function Navbar() {
             <Text style={[styles.optionsNavbar, pressed && styles.optionsNavbarPressed]} onPress={() => navigation.navigate("Home")} onPressIn={onPressInHandle} >Início</Text>
             {authenticated ? (
                 <>
-                    {/* <Text style={[styles.optionsNavbar, pressed && styles.optionsNavbarPressed]} onPress={navigation.navigate("Post")} onPressIn={onPressInHandle} >Criar Post</Text> */}
-                    {/* <Text style={[styles.optionsNavbar, pressed && styles.optionsNavbarPressed]} onPress={navigation.navigate("Perfil")} onPressIn={onPressInHandle} >Perfil</Text> */}
+                    <Text style={[styles.optionsNavbar, pressed && styles.optionsNavbarPressed]} onPress={() => navigation.navigate("Post")} onPressIn={onPressInHandle} >Criar Post</Text>
+                    <Text style={[styles.optionsNavbar, pressed && styles.optionsNavbarPressed]} onPress={() => navigation.navigate("Perfil")} onPressIn={onPressInHandle} >Perfil</Text>
                 </>
             ) : (
                 <>
