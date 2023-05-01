@@ -6,6 +6,7 @@ import { Notification } from '../components/Notification';
 import { InputArea } from '../components/InputArea';
 import { FormInput } from '../components/FormInput';
 import { Navbar } from '../components/Navbar';
+import { ImageLogo } from '../components/ImageLogo';
 
 import { Context } from '../context/UserContext';
 
@@ -32,7 +33,7 @@ export function LoginScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <Notification message={notify?.message} type={notify?.type} />
-        <Text style={styles.title} >MyApp!</Text>
+        <ImageLogo />
         <FormInput buttonTitle="Entrar" onPressHandle={handleSubmit(onSubmit)} >
           <InputArea title="E-mail" placeholder="Digite seu e-mail" onChangeTextHandle={text => setValue('email', text)} />
           <InputArea title="Senha" placeholder="Digite sua senha" onChangeTextHandle={text => setValue('password', text)} secureTextEntry={true} />

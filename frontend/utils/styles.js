@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 var font_family = 'Verdana'
-var title_color = '#00ced1'
+var title_color = '#16dca7'
 var text_color = '#fff'
 
 export const styles = StyleSheet.create({
     // Geral 
     container: {
       flex: 1,
-      backgroundColor: 'grey',
+      backgroundColor: '#a424f5',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: '5rem',
+      paddingTop: '2rem',
+      paddingBottom: '3rem',
     },
     title: {
       fontSize: '2rem',
