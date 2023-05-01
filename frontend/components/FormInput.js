@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { View, Pressable, Text } from 'react-native';
 
-import { styles } from '../../utils/styles';
+import { styles } from '../utils/styles';
 
 export function FormInput({ children, buttonTitle, onPressHandle }) {
 

@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Notification } from '../components/Notification/Notification';
-import { InputArea } from '../components/InputArea/InputArea';
-import { FormInput } from '../components/FormInput/FormInput';
+import { Notification } from '../components/Notification';
+import { InputArea } from '../components/InputArea';
+import { FormInput } from '../components/FormInput';
+import { Navbar } from '../components/Navbar';
 
 import { Context } from '../context/UserContext';
 
@@ -41,19 +42,9 @@ export function RegisterScreen({ navigation }) {
           <InputArea title="E-mail" placeholder="Digite seu e-mail" onChangeTextHandle={text => setValue('email', text)} />
           <InputArea title="Senha" placeholder="Digite sua senha" onChangeTextHandle={text => setValue('password', text)} secureTextEntry={true} />
           <InputArea title="Confirme sua senha" placeholder="Digite sua senha novamente" onChangeTextHandle={text => setValue('confirmpassword', text)} secureTextEntry={true} />
-          <Text style={stylesHome.registerText} onPress={() => {navigation.navigate('Login')}} >Já tem uma conta? <Text style={stylesHome.labelText} >Clique aqui.</Text></Text>
+          <Text style={styles.clickText} onPress={() => {navigation.navigate('Login')}} >Já tem uma conta? <Text style={styles.labelText} >Clique aqui.</Text></Text>
         </FormInput>
+        <Navbar />
       </View>
     );
 }
-
-const stylesHome = StyleSheet.create({
-  registerText: {
-    color: '#fff',
-    marginBottom: '2rem',
-    fontFamily: 'Verdana',
-  },
-  labelText: {
-    color: '#00ced1'
-  }
-})

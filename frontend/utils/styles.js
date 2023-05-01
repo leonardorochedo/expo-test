@@ -11,14 +11,13 @@ export const styles = StyleSheet.create({
       backgroundColor: 'grey',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: '5rem'
+      paddingTop: '5rem',
     },
     title: {
       fontSize: '2rem',
       fontWeight: 'bold',
       fontFamily: font_family,
       color: title_color,
-      //marginTop: '10%',
     },
     // Input
     label: {
@@ -66,6 +65,37 @@ export const styles = StyleSheet.create({
       color: title_color,
     },
     buttonTextPressed: {
+      transitionDuration: '100ms',
       color: text_color,
+    },
+    labelText: {
+      color: '#00ced1',
+    },
+    clickText: {
+      color: '#fff',
+      marginBottom: '2rem',
+      fontFamily: 'Verdana',
+    },
+    // Navbar
+    navbar: {
+      width: '100%',
+      height: '5vh',
+      alignItems: 'center',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      borderTopWidth: '2px',
+      borderTopColor: 'white',
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      bottom: 0,
+    },
+    optionsNavbar: {
+      fontFamily: font_family,
+      color: text_color,
+    },
+    optionsNavbarPressed: {
+      color: title_color,
+      transitionDuration: '100ms',
     }
 });

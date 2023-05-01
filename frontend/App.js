@@ -9,19 +9,16 @@ import { HomeScreen } from './pages/HomeScreen';
 // Context
 import { UserProvider } from "./context/UserContext";
 
-// Notification
-// import ToastManager from 'toastify-react-native';
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
       <UserProvider>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
+          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Home" component={HomeScreen} />
         </Stack.Navigator>
       </UserProvider>
     </NavigationContainer>
