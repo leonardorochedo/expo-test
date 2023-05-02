@@ -19,7 +19,7 @@ const User = db.define('User', {
         type: DataTypes.STRING,
         require: true,
     },
-}, { timestamps: false } // createdAt and updatedAt false
+}, { timestamps: true } // createdAt and updatedAt
 )
 
 module.exports = User

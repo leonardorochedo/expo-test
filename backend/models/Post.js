@@ -16,7 +16,8 @@ const Post = db.define('Post', {
         allowNull: false,
         require: true,
     }
-})
+}, { timestamps: true }
+)
 
 // criando a relacao entre os dois
 Post.belongsTo(User)
