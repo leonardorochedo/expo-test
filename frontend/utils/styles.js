@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       fontFamily: font_family,
       color: title_color,
+      marginBottom: '2rem'
     },
     // Input
     label: {
