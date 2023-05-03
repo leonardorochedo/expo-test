@@ -219,4 +219,21 @@ module.exports = class UserController {
 
         res.status(200).json({ user })
     }
+
+    static async getMyUser(req, res) {
+        const token = getToken(req)
+        console.log(token)
+        const user = await getUserByToken(token)
+
+        if(!user) {
+            res.status(204).json({message: 'Você não é autorizado para acessar este perfil'})
+            return
+        }
+
+        try {
+            res.status(200).json({user})
+        } catch (err) {
+            res.status(500).json({message: err})
+        }
+    }
 }
