@@ -174,9 +174,6 @@ module.exports = class UserController {
         try {
             await User.update(user.dataValues, {where: {id: user.id}})
 
-            // atualizar os carros do usuarios
-            // await Post.updateMany()
-
             res.status(200).json({
                 message: "Usuário atualizado com sucesso!"
             })

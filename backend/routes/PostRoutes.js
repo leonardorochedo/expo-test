@@ -5,7 +5,11 @@ const verifyToken = require('../helpers/verify-token')
 
 const PostController = require('../controllers/PostController')
 
-// router.get('/', PostController.getPosts)
+router.get('/', PostController.getAllPosts)
+router.get('/:id', PostController.getPostById)
+
 router.post('/create', verifyToken, PostController.create)
+router.patch('/edit/:id', verifyToken, PostController.editPost)
+router.delete('/delete/:id', verifyToken, PostController.deletePost)
  
 module.exports = router
