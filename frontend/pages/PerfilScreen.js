@@ -2,8 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import { Text, View } from 'react-native';
 
-import api from '../utils/api';
-
 import { Notification } from '../components/Notification';
 import { InputArea } from '../components/InputArea';
 import { FormInput } from '../components/FormInput';
@@ -18,17 +16,18 @@ export function PerfilScreen() {
 
     const [user, setUser] = useState({})
 
-    // const { editUser } = useContext(Context)
+    const { authenticated, getMyUser, editUser } = useContext(Context)
 
     const { register, setValue, handleSubmit } = useForm()
 
     const [notify, setNotify] = useState({})
 
     // get user
-    api.get(`/users/withtoken`)
-    .then((res) => {
-        setUser(res)
-    })
+    async function getUser() {
+        await getMyUser().then((response) => setUser(response))
+    }
+
+    getUser()
 
     // register fields
     useEffect(() => {
@@ -40,7 +39,7 @@ export function PerfilScreen() {
     }, [register])
 
     async function onSubmit(data) {
-      // await editUser(data).then((response) => setNotify(response))
+      await editUser(data).then((response) => setNotify(response))
     }
 
     return (

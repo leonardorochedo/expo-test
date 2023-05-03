@@ -71,6 +71,22 @@ export function useApi() {
         }
     }
 
-    return { authenticated, registerUser, loginUser }
+    async function editUser(user) {
+
+    }
+
+    async function getMyUser() {
+        try {
+            const data = await api.get('/users/myuser').then((response) => {
+                return response.data
+            })
+
+            console.log("Deu")
+        } catch (err) {
+            console.log("Errado")
+        }
+    }
+
+    return { authenticated, registerUser, loginUser, editUser, getMyUser }
 
 }

@@ -6,10 +6,10 @@ const Context = createContext()
 
 function UserProvider({ children }) {
 
-    const { authenticated, registerUser, loginUser} = useApi()
+    const { authenticated, registerUser, loginUser, editUser, getMyUser } = useApi()
 
     return (
-        <Context.Provider value={{ authenticated, registerUser, loginUser }}>
+        <Context.Provider value={{ authenticated, registerUser, loginUser, editUser, getMyUser }}>
             {children}
         </Context.Provider>
     )
