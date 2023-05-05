@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 
 const User = require('../models/User')
+const Post = require('../models/Post')
 
 // Helpers
 const createUserToken = require('../helpers/create-user-token')
@@ -199,8 +200,9 @@ module.exports = class UserController {
         }
 
         try {
+            await Post.destroy({where: {UserId: user.id}})
             await User.destroy({where: {id: user.id}})
-            // await Post.deleteMany({'user._id': id})
+
             res.status(202).json({message: 'Usuário deletado com sucesso!'})
         } catch(err) {
             res.status(500).json({message: err})

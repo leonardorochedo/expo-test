@@ -21,6 +21,6 @@ const Post = db.define('Post', {
 
 // criando a relacao entre os dois
 Post.belongsTo(User)
-User.hasMany(Post)
+User.hasMany(Post, { onDelete: 'CASCADE' })
 
 module.exports = Post
