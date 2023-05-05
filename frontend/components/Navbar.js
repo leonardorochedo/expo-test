@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { styles } from '../utils/styles';
 
-import { Context } from '../context/UserContext';
+import { Context } from '../context/AppContext';
 
 export function Navbar() {
 

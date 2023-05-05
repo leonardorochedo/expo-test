@@ -8,13 +8,13 @@ import { FormInput } from '../components/FormInput';
 import { Navbar } from '../components/Navbar';
 import { ImageLogo } from '../components/ImageLogo';
 
-import { Context } from '../context/UserContext';
+import { Context } from '../context/AppContext';
 
 import { styles } from '../utils/styles';
 
 export function PostScreen() {
 
-    // const { editUser } = useContext(Context)
+    const { createPost } = useContext(Context)
 
     const { register, setValue, handleSubmit } = useForm()
 
@@ -27,7 +27,7 @@ export function PostScreen() {
     }, [register])
 
     async function onSubmit(data) {
-      // await editUser(data).then((response) => setNotify(response))
+      await createPost(data).then((response) => setNotify(response))
     }
 
     return (

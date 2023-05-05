@@ -7,8 +7,8 @@ export function Notification({ message, type }) {
     const messageRef = useRef(null)
 
     showMessage({
-        message: message ? message : 'Carregando',
-        type: type ? type : 'info',
+        message: message,
+        type: type,
         duration: 3000,
         icon: 'auto',
         hideOnPress: true,
@@ -19,7 +19,7 @@ export function Notification({ message, type }) {
 
     return (
         <>
-            {message && <FlashMessage ref={messageRef} position="top" />}
+            <FlashMessage ref={messageRef} position="top" />
         </>
     );
 }

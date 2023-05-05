@@ -9,14 +9,14 @@ import { PostScreen } from './pages/PostScreen';
 import { PerfilScreen } from './pages/PerfilScreen';
 
 // Context
-import { UserProvider } from "./context/UserContext";
+import { AppProvider } from "./context/AppContext";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <UserProvider>
+      <AppProvider>
         <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
@@ -24,7 +24,7 @@ export default function App() {
           <Stack.Screen name="Post" component={PostScreen} />
           <Stack.Screen name="Perfil" component={PerfilScreen} />
         </Stack.Navigator>
-      </UserProvider>
+      </AppProvider>
     </NavigationContainer>
   );
 }

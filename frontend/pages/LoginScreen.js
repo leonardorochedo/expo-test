@@ -8,7 +8,7 @@ import { FormInput } from '../components/FormInput';
 import { Navbar } from '../components/Navbar';
 import { ImageLogo } from '../components/ImageLogo';
 
-import { Context } from '../context/UserContext';
+import { Context } from '../context/AppContext';
 
 import { styles } from '../utils/styles';
 

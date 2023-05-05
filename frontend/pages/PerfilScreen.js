@@ -8,7 +8,7 @@ import { FormInput } from '../components/FormInput';
 import { Navbar } from '../components/Navbar';
 import { ImageLogo } from '../components/ImageLogo';
 
-import { Context } from '../context/UserContext';
+import { Context } from '../context/AppContext';
 
 import { styles } from '../utils/styles';
 
@@ -16,18 +16,19 @@ export function PerfilScreen() {
 
     const [user, setUser] = useState({})
 
-    const { authenticated, getMyUser, editUser } = useContext(Context)
+    const { getMyUser, editUser } = useContext(Context)
 
     const { register, setValue, handleSubmit } = useForm()
 
     const [notify, setNotify] = useState({})
+    const [notifyView, setNotifyView] = useState(false)
 
     // get user
-    async function getUser() {
-        await getMyUser().then((response) => setUser(response))
-    }
-
-    getUser()
+    useEffect(() => {
+        getMyUser().then((response) => {
+            setUser(response.user)
+        })
+    }, [])
 
     // register fields
     useEffect(() => {
@@ -39,18 +40,19 @@ export function PerfilScreen() {
     }, [register])
 
     async function onSubmit(data) {
-      await editUser(data).then((response) => setNotify(response))
+        setNotifyView(true)
+        await editUser(data, user.id).then((response) => setNotify(response))
     }
 
     return (
         <View style={styles.container}>
-            <Notification message={notify?.message} type={notify?.type} />
+            {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
             <Text style={styles.title}>Perfil</Text>
             <FormInput buttonTitle="Atualizar" onPressHandle={handleSubmit(onSubmit)} >
-                <InputArea value={user?.name} title="Nome" placeholder="Digite seu nome" onChangeTextHandle={text => setValue('name', text)} />
-                <InputArea value={user?.phone} title="Celular" placeholder="Digite seu celular" onChangeTextHandle={text => setValue('phone', text)} />
-                <InputArea value={user?.email} title="E-mail" placeholder="Digite seu e-mail" onChangeTextHandle={text => setValue('email', text)} />
+                <InputArea title={`Nome: ${user?.name}`} placeholder="Novo nome" onChangeTextHandle={text => setValue('name', text)} />
+                <InputArea title={`Celular: ${user?.phone}`} placeholder="Novo celular" onChangeTextHandle={text => setValue('phone', text)} />
+                <InputArea title={`E-mail: ${user?.email}`} placeholder="Novo e-mail" onChangeTextHandle={text => setValue('email', text)} />
                 <InputArea title="Senha" placeholder="Digite sua senha" onChangeTextHandle={text => setValue('password', text)} secureTextEntry={true} />
                 <InputArea title="Confirme sua senha" placeholder="Digite sua senha novamente" onChangeTextHandle={text => setValue('confirmpassword', text)} secureTextEntry={true} />
             </FormInput>

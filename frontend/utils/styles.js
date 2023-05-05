@@ -99,5 +99,27 @@ export const styles = StyleSheet.create({
     optionsNavbarPressed: {
       color: title_color,
       transitionDuration: '100ms',
+    },
+    // Post
+    postContainer: {
+      backgroundColor: '#0b3a9c',
+      borderRadius: '15px',
+      width: '80%',
+      padding: '2rem',
+      shadowColor: '#171717',
+      shadowOffset: {width: -2, height: 4},
+      shadowOpacity: 0.2,
+      shadowRadius: 3,
+    },
+    postTitle: {
+      fontFamily: font_family,
+      color: text_color,
+      fontSize: '1.5rem',
+      marginBottom: '2rem',
+    },
+    postText: {
+      fontFamily: font_family,
+      color: text_color,
+      fontSize: '1rem',
     }
 });

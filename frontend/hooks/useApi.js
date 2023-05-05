@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // Navigation
 import { useNavigation } from '@react-navigation/native';
 
+// Api Axios
 import api from '../utils/api';
 
 export function useApi() {
@@ -22,21 +23,21 @@ export function useApi() {
 
         getToken()
 
-        // se tiver um token ja manda pro backend atraves da API
         if(token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
             setAuthenticate(true)
         }
-    }, [])
-
+    }, [authenticated])
+    
     async function authUser(data) {
         setAuthenticate(true)
-        AsyncStorage.setItem('token', JSON.stringify(data.token)) // setando token
-        setInterval(() => {
+        AsyncStorage.setItem('token', JSON.stringify(data.token))
+        setTimeout(() => {
             navigation.navigate("Home")
         }, 2000)
     }
 
+    // Users
     async function registerUser(user) {
         let msgText = 'Cadastro realizado com sucesso!'
 
@@ -71,8 +72,19 @@ export function useApi() {
         }
     }
 
-    async function editUser(user) {
+    async function editUser(user, id) {
+        let msgText = 'Usuário editado com sucesso!'
 
+        try {
+            const data = await api.patch(`/users/edit/${id}`, user).then((response) => {
+                return response.data
+            })
+            
+            return {message: msgText, type: 'success'}
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
     }
 
     async function getMyUser() {
@@ -81,12 +93,41 @@ export function useApi() {
                 return response.data
             })
 
-            console.log("Deu")
+            return data
         } catch (err) {
-            console.log("Errado")
+            return {message: err.response.data.message, type: 'danger'}
         }
     }
 
-    return { authenticated, registerUser, loginUser, editUser, getMyUser }
+    // Posts
+    async function getPosts(user) {
+        try {
+            const data = await api.get('/posts', user).then((response) => {
+                return response.data
+            })
+            
+            return { data }
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
+    async function createPost(post) {
+        let msgText = "Publicação criada com sucesso"
+
+        try {
+            const data = await api.post('/posts/create', post).then((response) => {
+                return response.data
+            })
+            
+            return {message: msgText, type: 'success'}
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
+    return { authenticated, registerUser, loginUser, editUser, getMyUser, getPosts, createPost }
 
 }

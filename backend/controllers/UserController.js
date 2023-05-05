@@ -222,7 +222,6 @@ module.exports = class UserController {
 
     static async getMyUser(req, res) {
         const token = getToken(req)
-        console.log(token)
         const user = await getUserByToken(token)
 
         if(!user) {
