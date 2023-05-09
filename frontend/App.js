@@ -2,11 +2,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //  Pages
-import { LoginScreen } from "./pages/LoginScreen";
-import { RegisterScreen } from './pages/RegisterScreen';
 import { HomeScreen } from './pages/HomeScreen';
-import { PostScreen } from './pages/PostScreen';
-import { PerfilScreen } from './pages/PerfilScreen';
+
+import { LoginScreen } from "./pages/User/LoginScreen";
+import { RegisterScreen } from './pages/User/RegisterScreen';
+import { PerfilScreen } from './pages/User/PerfilScreen';
+import { EditUserScreen } from './pages/User/EditUserScreen';
+import { PostUserScreen } from './pages/User/PostUserScreen';
+
+import { PostScreen } from './pages/Post/PostScreen';
 
 // Context
 import { AppProvider } from "./context/AppContext";
@@ -21,8 +25,10 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
-          <Stack.Screen name="Post" component={PostScreen} />
           <Stack.Screen name="Perfil" component={PerfilScreen} />
+          <Stack.Screen name="EditUser" component={EditUserScreen} />
+          <Stack.Screen name="PostUser" component={PostUserScreen} />
+          <Stack.Screen name="Post" component={PostScreen} />
         </Stack.Navigator>
       </AppProvider>
     </NavigationContainer>

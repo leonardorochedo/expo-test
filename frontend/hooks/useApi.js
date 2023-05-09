@@ -87,6 +87,44 @@ export function useApi() {
         }
     }
 
+    async function deleteUser(id) {
+        let msgText = 'Usuário deletado com sucesso!'
+
+        try {
+            const data = await api.delete(`/users/delete/${id}`).then((response) => {
+                return response.data
+            })
+
+            setAuthenticate(false)
+            AsyncStorage.removeItem('token')
+            api.defaults.headers.Authorization = undefined
+
+            setTimeout(() => {
+                navigation.navigate("Home")
+                window.location.reload(true)
+            }, 2000)
+            
+            return {message: msgText, type: 'success'}
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
+    async function logoutUser() {
+        setAuthenticate(false)
+        AsyncStorage.removeItem('token')
+        api.defaults.headers.Authorization = undefined
+
+        
+        setTimeout(() => {
+            navigation.navigate("Home")
+            window.location.reload(true)
+        }, 2000)
+
+        return {message: 'Usuário deslogado com sucesso', type: 'success'}
+    }
+
     async function getMyUser() {
         try {
             const data = await api.get('/users/myuser').then((response) => {
@@ -128,6 +166,6 @@ export function useApi() {
         }
     }
 
-    return { authenticated, registerUser, loginUser, editUser, getMyUser, getPosts, createPost }
+    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, createPost }
 
 }

@@ -2,15 +2,15 @@ import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import { Text, View } from 'react-native';
 
-import { Notification } from '../components/Notification';
-import { InputArea } from '../components/InputArea';
-import { FormInput } from '../components/FormInput';
-import { Navbar } from '../components/Navbar';
-import { ImageLogo } from '../components/ImageLogo';
+import { Notification } from '../../components/Notification';
+import { InputArea } from '../../components/InputArea';
+import { FormInput } from '../../components/FormInput';
+import { Navbar } from '../../components/Navbar';
+import { ImageLogo } from '../../components/ImageLogo';
 
-import { Context } from '../context/AppContext';
+import { Context } from '../../context/AppContext';
 
-import { styles } from '../utils/styles';
+import { styles } from '../../utils/styles';
 
 export function LoginScreen({ navigation }) {
 

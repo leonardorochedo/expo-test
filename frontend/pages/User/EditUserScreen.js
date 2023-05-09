@@ -2,17 +2,17 @@ import { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'
 import { Text, View } from 'react-native';
 
-import { Notification } from '../components/Notification';
-import { InputArea } from '../components/InputArea';
-import { FormInput } from '../components/FormInput';
-import { Navbar } from '../components/Navbar';
-import { ImageLogo } from '../components/ImageLogo';
+import { Notification } from '../../components/Notification';
+import { InputArea } from '../../components/InputArea';
+import { FormInput } from '../../components/FormInput';
+import { Navbar } from '../../components/Navbar';
+import { ImageLogo } from '../../components/ImageLogo';
 
-import { Context } from '../context/AppContext';
+import { Context } from '../../context/AppContext';
 
-import { styles } from '../utils/styles';
+import { styles } from '../../utils/styles';
 
-export function PerfilScreen() {
+export function EditUserScreen() {
 
     const [user, setUser] = useState({})
 
@@ -48,7 +48,7 @@ export function PerfilScreen() {
         <View style={styles.container}>
             {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
-            <Text style={styles.title}>Perfil</Text>
+            <Text style={styles.title}>Editando Perfil</Text>
             <FormInput buttonTitle="Atualizar" onPressHandle={handleSubmit(onSubmit)} >
                 <InputArea title={`Nome: ${user?.name}`} placeholder="Novo nome" onChangeTextHandle={text => setValue('name', text)} />
                 <InputArea title={`Celular: ${user?.phone}`} placeholder="Novo celular" onChangeTextHandle={text => setValue('phone', text)} />

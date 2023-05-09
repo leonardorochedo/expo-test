@@ -56,14 +56,11 @@ module.exports = class PostController {
         const token = getToken(req)
         const user = await getUserByToken(token)
 
-
-        const userId = user.id
-
         // create post
         const post = new Post({
             title,
             description,
-            UserId: userId
+            UserId: user.id
         })
 
         try {
