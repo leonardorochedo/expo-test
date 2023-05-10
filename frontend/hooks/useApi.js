@@ -151,6 +151,19 @@ export function useApi() {
         }
     }
 
+    async function getUserPosts(id) {
+        try {
+            const data = await api.get(`/posts/user/${id}`).then((response) => {
+                return response.data
+            })
+            
+            return { data }
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
     async function createPost(post) {
         let msgText = "Publicação criada com sucesso"
 
@@ -171,6 +184,6 @@ export function useApi() {
         }
     }
 
-    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, createPost }
+    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, getUserPosts, createPost }
 
 }

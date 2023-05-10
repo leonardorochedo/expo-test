@@ -42,6 +42,27 @@ module.exports = class PostController {
         }
     }
 
+    static async getUserPosts(req, res) {
+        const id = req.params.id
+
+        const posts = await Post.findAll({
+            include: User,
+            where: { UserId: id },
+            order: [['createdAt']],
+        })
+
+        if(!posts) {
+            res.status(204).json({message: 'Nenhuma publicação encontrada'})
+            return
+        }
+
+        try {
+            res.status(200).json({ posts })
+        } catch (err) {
+            res.status(500).json({message: err})
+        }
+    }
+
     static async create(req, res) {
         const {title, description} = req.body
 

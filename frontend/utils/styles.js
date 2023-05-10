@@ -21,6 +21,13 @@ export const styles = StyleSheet.create({
       color: title_color,
       marginBottom: '2rem'
     },
+    subTitle: {
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      fontFamily: font_family,
+      color: title_color,
+      marginBottom: '2rem'
+    },
     // Input
     label: {
       fontSize: '1rem',

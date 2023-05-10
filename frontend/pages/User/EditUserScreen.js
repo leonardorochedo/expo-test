@@ -48,7 +48,7 @@ export function EditUserScreen() {
         <View style={styles.container}>
             {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
-            <Text style={styles.title}>Editando Perfil</Text>
+            <Text style={styles.subTitle}>Editando Perfil</Text>
             <FormInput buttonTitle="Atualizar" onPressHandle={handleSubmit(onSubmit)} >
                 <InputArea title={`Nome: ${user?.name}`} placeholder="Novo nome" onChangeTextHandle={text => setValue('name', text)} />
                 <InputArea title={`Celular: ${user?.phone}`} placeholder="Novo celular" onChangeTextHandle={text => setValue('phone', text)} />

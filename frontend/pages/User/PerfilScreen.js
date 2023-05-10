@@ -41,6 +41,7 @@ export function PerfilScreen() {
         <View style={styles.container}>
             {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
+            <Text style={styles.subTitle}>Perfil de: {user.name}</Text>
             <View>
                 <Text style={""} onPress={() => navigation.navigate('EditUser')} >EDITAR PERFIL</Text>
                 <Text style={""} onPress={() => navigation.navigate('PostUser')} >VER PUBLICAÇÕES</Text>
