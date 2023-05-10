@@ -159,6 +159,11 @@ export function useApi() {
                 return response.data
             })
             
+            setTimeout(() => {
+                navigation.navigate("Home")
+                window.location.reload(true)
+            }, 2000)
+
             return {message: msgText, type: 'success'}
         } catch (err) {
             msgText = err.response.data.message

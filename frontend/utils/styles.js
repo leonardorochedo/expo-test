@@ -106,6 +106,7 @@ export const styles = StyleSheet.create({
       borderRadius: '15px',
       width: '80%',
       padding: '2rem',
+      marginBottom: '1rem',
       shadowColor: '#171717',
       shadowOffset: {width: -2, height: 4},
       shadowOpacity: 0.2,
@@ -121,5 +122,11 @@ export const styles = StyleSheet.create({
       fontFamily: font_family,
       color: text_color,
       fontSize: '1rem',
+    },
+    postAuthor: {
+      fontFamily: font_family,
+      color: text_color,
+      fontSize: '.75rem',
+      marginLeft: 'auto'
     }
 });

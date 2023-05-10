@@ -8,7 +8,10 @@ const getUserByToken = require('../helpers/get-user-by-token')
 module.exports = class PostController {
 
     static async getAllPosts(req, res) {
-        const posts = await Post.findAll()
+        const posts = await Post.findAll({
+            include: User,
+            order: [['createdAt']],
+        })
 
         if(!posts) {
             res.status(204).json({message: 'Nenhuma publicação encontrada'})
