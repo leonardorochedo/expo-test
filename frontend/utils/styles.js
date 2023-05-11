@@ -48,6 +48,29 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       fontFamily: font_family,
     },
+    // Button
+    button: {
+      width: '100%',
+      height: '3rem',
+      marginBottom: '2rem',
+      backgroundColor: 'transparent',
+      border: `2px solid ${title_color}`,
+      borderRadius: '5px',
+      textAlign: 'center',
+      justifyContent: 'center',
+    },
+    buttonPressed: {
+      backgroundColor: title_color,
+      border: `2px solid ${title_color}`,
+      transitionDuration: '100ms',
+    },
+    buttonText: {
+      fontFamily: font_family,
+      color: title_color,
+    },
+    buttonTextPressed: {
+      color: text_color,
+    },
     // Form
     formContainer: {
       flex: 1,
@@ -55,7 +78,7 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    button: {
+    buttonForm: {
       height: '2rem',
       width: '30%',
       marginLeft: 'auto',
@@ -65,15 +88,15 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       justifyContent: 'center',
     },
-    buttonPressed: {
+    buttonFormPressed: {
       backgroundColor: title_color,
       transitionDuration: '100ms',
     },
-    buttonText: {
+    buttonFormText: {
       fontFamily: font_family,
       color: title_color,
     },
-    buttonTextPressed: {
+    buttonFormTextPressed: {
       transitionDuration: '100ms',
       color: text_color,
     },

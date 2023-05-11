@@ -24,8 +24,8 @@ export function FormInput({ children, buttonTitle, onPressHandle }) {
   return (
     <View style={styles.formContainer} >
         {children}
-        <Pressable style={[styles.button, pressed && styles.buttonPressed]} onPress={onPressHandle} onPressIn={onPressInHandle} ref={buttonRef} >
-          <Text style={[styles.buttonText, pressed && styles.buttonTextPressed]} >{buttonTitle.toUpperCase()}</Text>
+        <Pressable style={[styles.buttonForm, pressed && styles.buttonPressed]} onPress={onPressHandle} onPressIn={onPressInHandle} ref={buttonRef} >
+          <Text style={[styles.buttonFormText, pressed && styles.buttonFormTextPressed]} >{buttonTitle.toUpperCase()}</Text>
         </Pressable>
     </View>
   );
