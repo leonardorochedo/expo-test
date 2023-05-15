@@ -116,7 +116,6 @@ export function useApi() {
         AsyncStorage.removeItem('token')
         api.defaults.headers.Authorization = undefined
 
-        
         setTimeout(() => {
             navigation.navigate("Home")
             window.location.reload(true)
@@ -184,6 +183,46 @@ export function useApi() {
         }
     }
 
-    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, getUserPosts, createPost }
+    async function editPost(post, id) {
+        let msgText = 'Publicação editada com sucesso!'
+
+        try {
+            const data = await api.patch(`/posts/edit/${id}`, post).then((response) => {
+                return response.data
+            })
+            
+            setTimeout(() => {
+                navigation.navigate("Home")
+                window.location.reload(true)
+            }, 2000)
+
+            return {message: msgText, type: 'success'}
+        } catch (err) {
+            msgText = err.response.data
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
+    async function deletePost(id) {
+        let msgText = 'Publicação deletada com sucesso!'
+
+        try {
+            const data = await api.delete(`/posts/delete/${id}`).then((response) => {
+                return response.data
+            })
+
+            setTimeout(() => {
+                navigation.navigate("Home")
+                window.location.reload(true)
+            }, 2000)
+            
+            return {message: msgText, type: 'success'}
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
+    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, getUserPosts, createPost, editPost, deletePost }
 
 }

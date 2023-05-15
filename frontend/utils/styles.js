@@ -158,5 +158,14 @@ export const styles = StyleSheet.create({
       color: text_color,
       fontSize: '.75rem',
       marginLeft: 'auto'
+    },
+    // PostUser
+    textEditPost: {
+      fontFamily: font_family,
+      color: 'yellow'
+    },
+    textDeletePost: {
+      fontFamily: font_family,
+      color: 'red'
     }
 });

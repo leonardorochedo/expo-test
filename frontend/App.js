@@ -10,7 +10,8 @@ import { PerfilScreen } from './pages/User/PerfilScreen';
 import { EditUserScreen } from './pages/User/EditUserScreen';
 import { PostUserScreen } from './pages/User/PostUserScreen';
 
-import { PostScreen } from './pages/Post/PostScreen';
+import { CreatePostScreen } from './pages/Post/CreatePostScreen';
+import { EditPostScreen } from './pages/Post/EditPostScreen';
 
 // Context
 import { AppProvider } from "./context/AppContext";
@@ -28,7 +29,8 @@ export default function App() {
           <Stack.Screen name="Perfil" component={PerfilScreen} />
           <Stack.Screen name="EditUser" component={EditUserScreen} />
           <Stack.Screen name="PostUser" component={PostUserScreen} />
-          <Stack.Screen name="Post" component={PostScreen} />
+          <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+          <Stack.Screen name="EditPost" component={EditPostScreen} />
         </Stack.Navigator>
       </AppProvider>
     </NavigationContainer>

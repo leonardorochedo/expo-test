@@ -12,7 +12,7 @@ import { Context } from '../../context/AppContext';
 
 import { styles } from '../../utils/styles';
 
-export function PostScreen() {
+export function CreatePostScreen() {
 
     const { createPost } = useContext(Context)
 
@@ -34,7 +34,7 @@ export function PostScreen() {
         <View style={styles.container}>
             <Notification message={notify?.message} type={notify?.type} />
             <ImageLogo />
-            <Text style={styles.title}>Criar Post</Text>
+            <Text style={styles.title}>Criar Publicação</Text>
             <FormInput buttonTitle="Criar" onPressHandle={handleSubmit(onSubmit)} >
                 <InputArea title="Título" placeholder="Digite o título" onChangeTextHandle={text => setValue('title', text)} />
                 <InputArea title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
