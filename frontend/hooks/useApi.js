@@ -150,6 +150,19 @@ export function useApi() {
         }
     }
 
+    async function getPostById(id, userId) {
+        try {
+            const data = await api.get(`/posts/${id}/${userId}`).then((response) => {
+                return response.data
+            })
+            
+            return { data }
+        } catch (err) {
+            msgText = err.response.data.message
+            return {message: msgText, type: 'danger'}
+        }
+    }
+
     async function getUserPosts(id) {
         try {
             const data = await api.get(`/posts/user/${id}`).then((response) => {
@@ -223,6 +236,6 @@ export function useApi() {
         }
     }
 
-    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, getUserPosts, createPost, editPost, deletePost }
+    return { authenticated, registerUser, loginUser, editUser, deleteUser, logoutUser, getMyUser, getPosts, getPostById, getUserPosts, createPost, editPost, deletePost }
 
 }

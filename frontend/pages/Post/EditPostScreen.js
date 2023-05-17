@@ -14,9 +14,10 @@ import { styles } from '../../utils/styles';
 
 export function EditPostScreen({ route }) {
 
-    const postId = route.params.postId
+    const { postId, userId } = route.params
+    const [post, setPost] = useState({})
 
-    const { editPost } = useContext(Context)
+    const { getPostById, editPost } = useContext(Context)
 
     const { register, setValue, handleSubmit } = useForm()
 
@@ -29,6 +30,12 @@ export function EditPostScreen({ route }) {
       register('description')
     }, [register])
 
+    useEffect(() => {
+      getPostById(postId, userId).then((response) => {
+        setPost(response.data.post)
+      })
+    }, [])
+
     async function onSubmit(data) {
       setNotifyView(true)
       await editPost(data, postId).then((response) => setNotify(response))
@@ -40,8 +47,8 @@ export function EditPostScreen({ route }) {
             <ImageLogo />
             <Text style={styles.title}>Editando Publicação</Text>
             <FormInput buttonTitle="Editar" onPressHandle={handleSubmit(onSubmit)} >
-                <InputArea title="Título" placeholder="Digite o título" onChangeTextHandle={text => setValue('title', text)} />
-                <InputArea title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
+                <InputArea title={`Título: ${post.title}`} placeholder="Digite o título" onChangeTextHandle={text => setValue('title', text)} />
+                <InputArea title={`Descrição: ${post.description}`} placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
             </FormInput>
             <Navbar />
         </View>

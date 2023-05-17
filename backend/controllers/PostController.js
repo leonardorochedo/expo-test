@@ -26,9 +26,12 @@ module.exports = class PostController {
     }
 
     static async getPostById(req, res) {
-        const id = req.params.id
+        const { id, userId } = req.params
 
-        const post = await Post.findOne({where: {id: id}})
+        const post = await Post.findOne({
+            include: User,
+            where: { id: id, UserId: userId }
+        })
 
         if(!post) {
             res.status(204).json({message: 'Nenhuma publicação encontrada'})

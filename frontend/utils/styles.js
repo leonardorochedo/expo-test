@@ -28,6 +28,12 @@ export const styles = StyleSheet.create({
       color: title_color,
       marginBottom: '2rem'
     },
+    text: {
+      fontSize: '1rem',
+      fontWeight: 'bold',
+      fontFamily: font_family,
+      color: text_color
+    },
     // Input
     label: {
       fontSize: '1rem',
@@ -153,11 +159,15 @@ export const styles = StyleSheet.create({
       color: text_color,
       fontSize: '1rem',
     },
+    detailsText: {
+      fontFamily: font_family,
+      color: title_color,
+      fontSize: '.75rem',
+    },
     postAuthor: {
       fontFamily: font_family,
       color: text_color,
       fontSize: '.75rem',
-      marginLeft: 'auto'
     },
     // PostUser
     textEditPost: {

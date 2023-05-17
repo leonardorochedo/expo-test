@@ -27,7 +27,9 @@ export function PostUserScreen() {
     }, [])
 
     useEffect(() => {
-        getUserPosts(user.id).then((res) => setPosts(res.data.posts))
+        getUserPosts(user.id).then((res) => {
+          setPosts(res.data.posts)
+        })
     }, [user])
 
     async function onDeletePost(id) {
@@ -40,17 +42,21 @@ export function PostUserScreen() {
         {notifyView && <Notification message={notify?.message} type={notify?.type} />}
         <ImageLogo />
         <Text style={styles.subTitle}>Publicações de {user.name}</Text>
-          {posts.map((post, index) => (
-            <View key={index} style={styles.postContainer}>
-              <Text style={styles.postTitle}>{post.title}</Text>
-              <Text style={styles.postText}>{post.description}</Text>
-              <Text style={styles.postAuthor}>-{post.User.name}</Text>
-              <View style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginTop: '1.5rem'}}>
-                <Text style={styles.textEditPost} onPress={() => navigation.navigate("EditPost", {postId: post.id})}>EDITAR</Text>
-                <Text style={styles.textDeletePost} onPress={() => onDeletePost(post.id)}>DELETAR</Text>
+          {posts == 'undefined' ? (
+            <Text style={styles.text}>Nenhuma publicação encontrada</Text>
+          ) : (
+            posts.map((post, index) => (
+              <View key={index} style={styles.postContainer}>
+                <Text style={styles.postTitle}>{post.title}</Text>
+                <Text style={styles.postText}>{post.description}</Text>
+                <Text style={styles.postAuthor}>-{post.User.name}</Text>
+                <View style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginTop: '1.5rem'}}>
+                  <Text style={styles.textEditPost} onPress={() => navigation.navigate("EditPost", {postId: post.id, userId: user.id})}>EDITAR</Text>
+                  <Text style={styles.textDeletePost} onPress={() => onDeletePost(post.id)}>DELETAR</Text>
+                </View>
               </View>
-            </View>
-          ))}
+              ))
+          )}
         <Navbar />
       </View>
     );

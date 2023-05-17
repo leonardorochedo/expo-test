@@ -10,6 +10,7 @@ import { PerfilScreen } from './pages/User/PerfilScreen';
 import { EditUserScreen } from './pages/User/EditUserScreen';
 import { PostUserScreen } from './pages/User/PostUserScreen';
 
+import { PostScreen } from './pages/Post/PostScreen';
 import { CreatePostScreen } from './pages/Post/CreatePostScreen';
 import { EditPostScreen } from './pages/Post/EditPostScreen';
 
@@ -24,6 +25,7 @@ export default function App() {
       <AppProvider>
         <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='Home'>
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="PostScreen" component={PostScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="Perfil" component={PerfilScreen} />
