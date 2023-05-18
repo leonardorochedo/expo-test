@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       paddingTop: '2rem',
       paddingBottom: '3rem',
+      maxWidth: '100vw'
     },
     title: {
       fontSize: '2rem',
@@ -32,7 +33,8 @@ export const styles = StyleSheet.create({
       fontSize: '1rem',
       fontWeight: 'bold',
       fontFamily: font_family,
-      color: text_color
+      color: text_color,
+      marginBottom: '2rem'
     },
     // Input
     label: {
@@ -153,6 +155,13 @@ export const styles = StyleSheet.create({
       color: text_color,
       fontSize: '1.5rem',
       marginBottom: '2rem',
+    },
+    containerDetails: {
+      display: 'flex',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'space-around',
+      marginTop: '1.5rem'
     },
     postText: {
       fontFamily: font_family,

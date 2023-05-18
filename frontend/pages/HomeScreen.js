@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from '../utils/styles';
+import { truncate } from '../utils/truncate';
 
 import { ImageLogo } from '../components/ImageLogo';
 import { Navbar } from '../components/Navbar';
@@ -24,11 +25,11 @@ export function HomeScreen() {
         <ImageLogo />
           {posts.map((post, index) => (
             <View key={index} style={styles.postContainer}>
-              <Text style={styles.postTitle}>{post.title}</Text>
-              <Text style={styles.postText}>{post.description}</Text>
-              <View style={{display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around', marginTop: '1.5rem'}}>
+              <Text style={styles.postTitle}>{truncate(post.title, 15)}</Text>
+              <Text style={styles.postText}>{truncate(post.description, 50)}</Text>
+              <View style={styles.containerDetails}>
                 <Text style={styles.detailsText} onPress={() => navigation.navigate("PostScreen", {postId: post.id, userId: post.UserId})}>ver detalhes</Text>
-                <Text style={styles.postAuthor}>-{post.User.name}</Text>
+                <Text style={styles.postAuthor}>-{truncate(post.User.name, 15)}</Text>
               </View>
             </View>
           ))}

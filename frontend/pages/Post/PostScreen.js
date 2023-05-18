@@ -26,9 +26,11 @@ export function PostScreen({ route }) {
     return (
         <View style={styles.container}>
             <ImageLogo />
-            <Text style={styles.subTitle}>{post.title}</Text>
-            <Text style={styles.text}>{post.description}</Text>
-            <Text style={styles.text}>Publicado por: {userName}</Text>
+            <View style={styles.postContainer}>
+              <Text style={styles.subTitle}>{post.title}</Text>
+              <Text style={styles.text}>{post.description}</Text>
+              <Text style={styles.postAuthor}>-{userName}</Text>
+            </View>
             <Navbar />
         </View>
     )
