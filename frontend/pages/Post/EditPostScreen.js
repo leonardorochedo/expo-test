@@ -30,9 +30,12 @@ export function EditPostScreen({ route }) {
       register('description')
     }, [register])
 
+    // get post
     useEffect(() => {
       getPostById(postId, userId).then((response) => {
         setPost(response.data.post)
+        setValue('title', response.data.post.title)
+        setValue('description', response.data.post.description)
       })
     }, [])
 
@@ -47,8 +50,8 @@ export function EditPostScreen({ route }) {
             <ImageLogo />
             <Text style={styles.title}>Editando Publicação</Text>
             <FormInput buttonTitle="Editar" onPressHandle={handleSubmit(onSubmit)} >
-                <InputArea title={`Título: ${post.title}`} placeholder="Digite o título" onChangeTextHandle={text => setValue('title', text)} />
-                <InputArea title={`Descrição: ${post.description}`} placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
+                <InputArea value={post?.title} title="Título" placeholder="Digite o título" onChangeTextHandle={text => {setPost({...post, title: text}); setValue('title', text)}} />
+                <InputArea value={post?.description} title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => {setPost({...post, description: text}); setValue('description', text)}} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
             </FormInput>
             <Navbar />
         </View>

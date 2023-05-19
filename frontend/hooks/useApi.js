@@ -79,6 +79,11 @@ export function useApi() {
             const data = await api.patch(`/users/edit/${id}`, user).then((response) => {
                 return response.data
             })
+
+            setTimeout(() => {
+                navigation.navigate("Home")
+                window.location.reload(true)
+            }, 2000)
             
             return {message: msgText, type: 'success'}
         } catch (err) {
