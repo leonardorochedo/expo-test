@@ -37,7 +37,7 @@ export function CreatePostScreen() {
             <Text style={styles.title}>Criar Publicação</Text>
             <FormInput buttonTitle="Criar" onPressHandle={handleSubmit(onSubmit)} >
                 <InputArea title="Título" placeholder="Digite o título" onChangeTextHandle={text => setValue('title', text)} />
-                <InputArea title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
+                <InputArea title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => setValue('description', text)} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} multiline={true} />
             </FormInput>
             <Navbar />
         </View>

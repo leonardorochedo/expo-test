@@ -51,7 +51,7 @@ export function EditPostScreen({ route }) {
             <Text style={styles.title}>Editando Publicação</Text>
             <FormInput buttonTitle="Editar" onPressHandle={handleSubmit(onSubmit)} >
                 <InputArea value={post?.title} title="Título" placeholder="Digite o título" onChangeTextHandle={text => {setPost({...post, title: text}); setValue('title', text)}} />
-                <InputArea value={post?.description} title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => {setPost({...post, description: text}); setValue('description', text)}} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} />
+                <InputArea value={post?.description} title="Descrição" placeholder="Digite uma descrição da publicação..." onChangeTextHandle={text => {setPost({...post, description: text}); setValue('description', text)}} styleInput={{description: {height: '10rem', justifyContent: 'flex-start'}}} multiline={true} />
             </FormInput>
             <Navbar />
         </View>
