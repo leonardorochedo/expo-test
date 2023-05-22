@@ -23,16 +23,19 @@ export function HomeScreen() {
     return (
       <View style={styles.container}>
         <ImageLogo />
-          {posts.map((post, index) => (
-            <View key={index} style={styles.postContainer}>
-              <Text style={styles.postTitle}>{truncate(post.title, 15)}</Text>
-              <Text style={styles.postText}>{truncate(post.description, 50)}</Text>
-              <View style={styles.containerDetails}>
-                <Text style={styles.detailsText} onPress={() => navigation.navigate("PostScreen", {postId: post.id, userId: post.UserId})}>ver detalhes</Text>
-                <Text style={styles.postAuthor}>-{truncate(post.User.name, 15)}</Text>
-              </View>
-            </View>
-          ))}
+          {posts == 'undefined' ? (
+              <Text style={styles.text}>Nenhuma publicação encontrada</Text>
+            ) : (
+              posts.map((post, index) => (
+                <View key={index} style={styles.postContainer}>
+                  <Text style={styles.postTitle}>{truncate(post.title, 15)}</Text>
+                  <Text style={styles.postText}>{truncate(post.description, 50)}</Text>
+                  <View style={styles.containerDetails}>
+                    <Text style={styles.detailsText} onPress={() => navigation.navigate("PostScreen", {postId: post.id, userId: post.UserId})}>ver detalhes</Text>
+                    <Text style={styles.postAuthor}>-{truncate(post.User.name, 15)}</Text>
+                  </View>
+                </View>
+              )))}
         <Navbar />
       </View>
     );

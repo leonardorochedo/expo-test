@@ -18,7 +18,11 @@ export function LoginScreen({ navigation }) {
 
     const { register, setValue, handleSubmit } = useForm()
 
+    const [email, setEmail] = useState()
+    const [isValid, setIsValid] = useState(false)
+
     const [notify, setNotify] = useState({})
+    const [notifyView, setNotifyView] = useState(false)
 
     // register fields
     useEffect(() => {
@@ -26,16 +30,33 @@ export function LoginScreen({ navigation }) {
       register('password')
     }, [register])
 
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if(emailRegex.test(email)) {
+        setIsValid(true)
+      }
+    }
+
     async function onSubmit(data) {
+      setNotifyView(true)
+      validateEmail(email)
+
+      if(!isValid) {
+        return setNotify({message: "Confira se o e-mail foi digitado corretamente", type: "danger"})
+      }
+      
       await loginUser(data).then((response) => setNotify(response))
     }
 
     return (
       <View style={styles.container}>
-        <Notification message={notify?.message} type={notify?.type} />
+        {notifyView && <Notification message={notify?.message} type={notify?.type} />}
         <ImageLogo />
         <FormInput buttonTitle="Entrar" onPressHandle={handleSubmit(onSubmit)} >
-          <InputArea title="E-mail" placeholder="Digite seu e-mail" onChangeTextHandle={text => setValue('email', text)} />
+          <InputArea title="E-mail" placeholder="Digite seu e-mail" onChangeTextHandle={text => {
+                                                                                                  setValue('email', text)
+                                                                                                  setEmail(text)
+                                                                                                }} />
           <InputArea title="Senha" placeholder="Digite sua senha" onChangeTextHandle={text => setValue('password', text)} secureTextEntry={true} />
           <Text style={styles.clickText} onPress={() => {navigation.navigate('Register')}} >Não tem uma conta? <Text style={styles.labelText} >Clique aqui.</Text></Text>
         </FormInput>

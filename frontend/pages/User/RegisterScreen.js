@@ -19,6 +19,7 @@ export function RegisterScreen({ navigation }) {
     const { register, setValue, handleSubmit } = useForm()
 
     const [notify, setNotify] = useState({})
+    const [notifyView, setNotifyView] = useState(false)
 
     // register fields
     useEffect(() => {
@@ -30,12 +31,13 @@ export function RegisterScreen({ navigation }) {
     }, [register])
 
     async function onSubmit(data) {
+      setNotifyView(true)
       await registerUser(data).then((response) => setNotify(response))
     }
 
     return (
       <View style={styles.container}>
-        <Notification message={notify?.message} type={notify?.type} />
+        {notifyView && <Notification message={notify?.message} type={notify?.type} />}
         <ImageLogo />
         <FormInput buttonTitle="Registrar" onPressHandle={handleSubmit(onSubmit)} >
           <InputArea title="Nome" placeholder="Digite seu nome" onChangeTextHandle={text => setValue('name', text)} />

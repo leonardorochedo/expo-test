@@ -19,6 +19,7 @@ export function CreatePostScreen() {
     const { register, setValue, handleSubmit } = useForm()
 
     const [notify, setNotify] = useState({})
+    const [notifyView, setNotifyView] = useState(false)
 
     // register fields
     useEffect(() => {
@@ -27,12 +28,13 @@ export function CreatePostScreen() {
     }, [register])
 
     async function onSubmit(data) {
+      setNotifyView(true)
       await createPost(data).then((response) => setNotify(response))
     }
 
     return (
         <View style={styles.container}>
-            <Notification message={notify?.message} type={notify?.type} />
+            {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
             <Text style={styles.title}>Criar Publicação</Text>
             <FormInput buttonTitle="Criar" onPressHandle={handleSubmit(onSubmit)} >
