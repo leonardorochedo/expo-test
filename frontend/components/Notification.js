@@ -7,8 +7,8 @@ export function Notification({ message, type }) {
     const messageRef = useRef(null)
 
     showMessage({
-        message: message,
-        type: type,
+        message,
+        type,
         duration: 3000,
         icon: 'auto',
         hideOnPress: true,

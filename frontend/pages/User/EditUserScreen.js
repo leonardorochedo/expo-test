@@ -11,6 +11,7 @@ import { ImageLogo } from '../../components/ImageLogo';
 import { Context } from '../../context/AppContext';
 
 import { styles } from '../../utils/styles';
+import { validateEmail } from '../../utils/validateEmail';
 
 export function EditUserScreen() {
 
@@ -44,6 +45,12 @@ export function EditUserScreen() {
 
     async function onSubmit(data) {
         setNotifyView(true)
+
+        if(!validateEmail(data.email)) {
+            setNotify({message: "Confira se o e-mail foi digitado corretamente", type: "danger"})
+            return
+        }
+
         await editUser(data, user.id).then((response) => setNotify(response))
     }
 
