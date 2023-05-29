@@ -8,7 +8,11 @@ Um lugar onde você pode postar seus pensamentos e dicas sobre qualquer coisa, m
 
 ## Projeto
 
-Foi bem bacana desenvolver esta aplicação mobile, utilizando todos os recursos que estão listados logo abaixo, passei por algumas complicações por ser o meu primeiro projeto em React Native porém gostei muito do resultado e de suas funcionalidades!
+Neste projeto, desenvolvi uma aplicação onde os usuários podem compartilhar pensamentos e dicas sobre diversos assuntos. Foi minha primeira experiência com React Native, o que trouxe desafios, mas também
+oportunidades de aprendizado.
+
+Utilizei recursos como react-navigation para navegação, react-native-async-storage para armazenamento local de tokens e bibliotecas como express e jsonwebtoken no backend para
+autenticação segura e também claro o regex de validar e-mail como de costume. Estou empolgado com o resultado e espero continuar aprimorando minhas habilidades.
 
 ## Bibliotecas
 
@@ -16,21 +20,21 @@ Utilizei as seguintes bibliotecas:
 
 ### Frontend
 
-1. **axios** para consumir a API.
-2. **react-navigation** para conseguir manipular e estruturar todas as rotas do projeto.
-3. **react-native-async-storage** para armazenar o token de cada usuário localmente em seu dispositivo.
-4. **react-hook-form** para utilizar hook's de formulários.
-5. **react-native-flash-message** para disparar pop up's.
+• **Axios** para consumir a API.<br>
+• **React Navigation** para conseguir manipular e estruturar todas as rotas do projeto.<br>
+• **React Native Async Storage** para armazenar o token de cada usuário localmente em seu dispositivo.<br>
+• **React Hook Form** para utilizar hook's de formulários.<br>
+• **React Native Flash Message** para disparar pop up's.<br>
 
 ### Backend
 
-1. **express** criar a API e gerenciar rotas, middleware e solicitações HTTP de forma eficiente.
-2. **cors** permitir ou restringir o acesso a recursos em um servidor web de diferentes origens.
-3. **jsonwebtoken** permite autenticação segura e confiável, fornecendo uma maneira de transmitir informações entre partes de forma criptografada e autenticada.
-4. **mysql2** driver MySQL para Node.js que permite conectar e interagir com bancos de dados MySQL.
-5. **sequelize**  ORM que simplifica o acesso e manipulação de bancos de dados relacionais (MySQL).
-6. **bcrypt** criptografia de senhas, oferece funções de hash seguras para proteger senhas de usuários.
-7. **nodemon** reinicia o servidor automaticamente após alguma alteração.
+• **Express** criar a API e gerenciar rotas, middleware e solicitações HTTP de forma eficiente.<br>
+• **Cors** permitir ou restringir o acesso a recursos em um servidor web de diferentes origens.<br>
+• **Json Web Token** permite autenticação segura e confiável, fornecendo uma maneira de transmitir informações entre partes de forma criptografada e autenticada.<br>
+• **Mysql2** driver MySQL para Node.js que permite conectar e interagir com bancos de dados MySQL.<br>
+• **Sequelize**  ORM que simplifica o acesso e manipulação de bancos de dados relacionais (MySQL).<br>
+• **Bcrypt** criptografia de senhas, oferece funções de hash seguras para proteger senhas de usuários.<br>
+• **Nodemon** reinicia o servidor automaticamente após alguma alteração.<br>
 
 ## Rode em sua máquina
 
@@ -60,3 +64,5 @@ npm start
 ```
 
 Após os passos acima o projeto vai rodar na URL *http://localhost:19006* ou em seu próprio dispositivo pelo QR Code da Expo.
+
+Vídeo demonstração utilizando o aplicativo: https://www.linkedin.com/feed/update/urn:li:ugcPost:7068991111091879936/
