@@ -18,19 +18,20 @@ export function useApi() {
     const [token, setToken] = useState()
     const navigation = useNavigation()
 
+    async function getToken() {
+        await AsyncStorage.getItem('token')
+        .then((data) => setToken(data))
+    }
+    
     useEffect(() => {
-        async function getToken () {
-            await AsyncStorage.getItem('token')
-            .then((data) => setToken(data))
-        }
-
         getToken()
+        console.log(token)
 
         if(token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
             setAuthenticate(true)
         }
-    }, [authenticated])
+    }, [authenticated, token])
     
     async function authUser(data) {
         setAuthenticate(true)
