@@ -25,7 +25,6 @@ export function useApi() {
     
     useEffect(() => {
         getToken()
-        console.log(token)
 
         if(token) {
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`

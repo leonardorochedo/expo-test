@@ -35,7 +35,8 @@ export function HomeScreen() {
                     <Text style={styles.postAuthor}>-{truncate(post.User.name, 15)}</Text>
                   </View>
                 </View>
-              )))}
+              )))
+          }
         <Navbar />
       </View>
     );

@@ -3,17 +3,19 @@ import { StyleSheet } from 'react-native';
 var font_family = 'Verdana'
 var title_color = '#16dca7'
 var text_color = '#fff'
+var bg_color = '#a424f5'
 
 export const styles = StyleSheet.create({
     // Geral 
     container: {
-      flex: 1,
-      backgroundColor: '#a424f5',
+      // flex: 1,
+      backgroundColor: bg_color,
       alignItems: 'center',
       justifyContent: 'center',
       paddingTop: '2rem',
       paddingBottom: '3rem',
-      maxWidth: '100vw'
+      maxWidth: '100vw',
+      minHeight: '100vh'
     },
     title: {
       fontSize: '2rem',
@@ -120,12 +122,13 @@ export const styles = StyleSheet.create({
     navbar: {
       width: '100%',
       height: '5vh',
+      backgroundColor: bg_color,
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'space-around',
       borderTopWidth: '2px',
       borderTopColor: 'white',
-      position: 'absolute',
+      position: 'fixed',
       left: 0,
       right: 0,
       bottom: 0,

@@ -43,7 +43,7 @@ export function PerfilScreen() {
             {notifyView && <Notification message={notify?.message} type={notify?.type} />}
             <ImageLogo />
             <Text style={styles.subTitle}>Perfil de: {user.name}</Text>
-            <View>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',}}>
                 <ButtonNavigation buttonTitle="EDITAR PERFIL" onPressHandle={() => navigation.navigate('EditUser')} />
                 <ButtonNavigation buttonTitle="VER PUBLICAÇÕES" onPressHandle={() => navigation.navigate('PostUser')} />
                 <ButtonNavigation buttonTitle="DELETAR CONTA" onPressHandle={() => onDeleteUser()} />
