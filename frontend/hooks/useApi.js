@@ -9,6 +9,9 @@ import { useNavigation } from '@react-navigation/native';
 // Api Axios
 import api from '../utils/api';
 
+// Regex email
+import { validateEmail } from '../utils/validateEmail';
+
 export function useApi() {
     
     const [authenticated, setAuthenticate] = useState(false)
@@ -42,6 +45,10 @@ export function useApi() {
         let msgText = 'Cadastro realizado com sucesso!'
 
         try {
+            if(!validateEmail(user.email)) {
+                return {message: "Confira se o e-mail foi digitado corretamente", type: "danger"}
+            }
+
             const data = await api.post('/users/register', user).then((response) => {
                 return response.data
             })
@@ -59,6 +66,10 @@ export function useApi() {
         let msgText = 'Login realizado com sucesso!'
 
         try {
+            if(!validateEmail(user.email)) {
+                return {message: "Confira se o e-mail foi digitado corretamente", type: "danger"}
+            }
+
             const data = await api.post('/users/login', user).then((response) => {
                 return response.data
             })
@@ -76,6 +87,10 @@ export function useApi() {
         let msgText = 'Usuário editado com sucesso!'
 
         try {
+            if(!validateEmail(user.email)) {
+                return {message: "Confira se o e-mail foi digitado corretamente", type: "danger"}
+            }
+
             const data = await api.patch(`/users/edit/${id}`, user).then((response) => {
                 return response.data
             })

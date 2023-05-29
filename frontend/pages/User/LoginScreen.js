@@ -11,7 +11,6 @@ import { ImageLogo } from '../../components/ImageLogo';
 import { Context } from '../../context/AppContext';
 
 import { styles } from '../../utils/styles';
-import { validateEmail } from '../../utils/validateEmail';
 
 export function LoginScreen({ navigation }) {
 
@@ -27,14 +26,9 @@ export function LoginScreen({ navigation }) {
       register('email')
       register('password')
     }, [register])
-
+    
     async function onSubmit(data) {
       setNotifyView(true)
-
-      if(!validateEmail(data.email)) {
-        setNotify({message: "Confira se o e-mail foi digitado corretamente", type: "danger"})
-        return
-      }
       
       await loginUser(data).then((response) => setNotify(response))
     }
